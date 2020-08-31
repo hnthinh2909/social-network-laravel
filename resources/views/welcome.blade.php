@@ -27,15 +27,16 @@
         </div>
         <div class="col-md-6">
             <h3>Sign In</h3>
-            <form action="#" method="POST">
+            <form action="{{route('signin')}}" method="POST">
                 <div class="form-group">
                     <label for="email">Your E-Mail</label>
                     <input class="form-control" type="text" name="email" id="email">
                 </div>
                 <div class="form-group">
                     <label for="password">Your Password</label>
-                    <input class="form-control" type="text" name="password" id="password">
+                    <input class="form-control" type="password" name="password" id="password">
                 </div>
+                <input type="hidden" name="_token" value="{{ Session::token() }}">
                 <button class="btn btn-primary" type="submit">Submit</button>
             </form>
         </div>
