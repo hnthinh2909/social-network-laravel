@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller {
     public function getDashBoard() {
-        $posts = Posts::all();
+        $posts = Posts::orderBy('created_at', 'desc')->get();
         return view('dashboard', ['posts' => $posts]);
     }
 
@@ -30,6 +30,10 @@ class PostsController extends Controller {
 
     public function getDeletePost($post_id) {
         $post = Posts::where('id', $post_id)->first();
+        if(Auth::user() != $post->user) {
+            return redirect()->back();
+        }
+
         $post->delete();
 
         return redirect()->route('dashboard')->with(['message' => 'Successfully deleted!']);
