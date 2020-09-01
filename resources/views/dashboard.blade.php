@@ -20,26 +20,19 @@
         <div class="col-md-6 col-md-offset-3">
             <header>
                 <h3>What other people say...</h3>
-                <article class="post">
-                    <p> Lorem Lorem Lorem LoremLoremLoremLoremLoremLoremLoremLoremLoremLorem </p>
-                    <div class="info">Posted by Max on 12 Feb 2019</div>
-                    <div class="interaction">
-                        <a href="#">Like</a> |
-                        <a href="#">Dislike</a> |
-                        <a href="#">Edit</a> |
-                        <a href="#">Delete</a>
-                    </div>
-                </article>
-                <article class="post">
-                    <p> Lorem Lorem Lorem LoremLoremLoremLoremLoremLoremLoremLoremLoremLorem </p>
-                    <div class="info">Posted by Max on 12 Feb 2019</div>
-                    <div class="interaction">
-                        <a href="#">Like</a> |
-                        <a href="#">Dislike</a> |
-                        <a href="#">Edit</a> |
-                        <a href="#">Delete</a>
-                    </div>
-                </article>
+                @foreach($posts as $post)
+                    <article class="post">
+                        <p> {{ $post['body'] }} </p>
+                        <div class="info">Posted by {{ $post->user->first_name }} on {{ $post['created_at'] }}</div>
+                        <div class="interaction">
+                            <a href="#">Like</a> |
+                            <a href="#">Dislike</a> |
+                            <a href="#">Edit</a> |
+                            <a href="#">Delete</a>
+                        </div>
+                    </article>
+                @endforeach
+
             </header>
         </div>
     </section>
