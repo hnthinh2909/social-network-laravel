@@ -49,3 +49,18 @@ Route::get('/logout', [
    'uses' => 'UserController@getLogOut',
    'as' => 'logout'
 ]);
+
+Route::post('/edit', [
+    'uses' => 'PostsController@postEditPost',
+    'as' => 'edit',
+]);
+
+Route::get('account', [
+    'uses' => 'UserController@getAccount',
+    'as' => 'account'
+]);
+
+Route::post('updateaccount', [
+    'uses' => 'UserController@postSaveAccount',
+    'as' => 'account.save'
+]);
