@@ -55,12 +55,22 @@ Route::post('/edit', [
     'as' => 'edit',
 ]);
 
-Route::get('account', [
+Route::get('/account', [
     'uses' => 'UserController@getAccount',
     'as' => 'account'
 ]);
 
-Route::post('updateaccount', [
+Route::post('/updateaccount', [
     'uses' => 'UserController@postSaveAccount',
     'as' => 'account.save'
+]);
+
+Route::post('/like', [
+    'uses' => 'PostsController@postLikePost',
+    'as' => 'like'
+]);
+
+Route::get('/userimage/{filename}', [
+    'uses' => 'UserController@getUserImage',
+    'as' => 'account.image'
 ]);
